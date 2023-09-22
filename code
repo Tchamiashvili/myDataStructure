@@ -1,0 +1,69 @@
+import java.util.Scanner;
+
+	class fixedSizeStack{
+		private int arr[];
+		private int cur=0;
+		private int size;
+		
+		fixedSizeStack(int n) {
+			size=n;
+			arr = new int[size];
+			
+		}
+		public Boolean full() {
+			return (cur==size);
+			}
+		
+		public Boolean empty() {
+			return (cur==0);
+		}
+		
+		public int top() {
+			if(!empty())
+			return arr[cur-1];
+			else {
+			System.out.println("Stack is empty!");
+			return -1;
+				}
+		}
+		
+		public void push(int element) {
+			if(!full()) {
+			arr[cur]=element;
+			cur++;
+			}
+			else System.out.println("Can not push,stack is full!");
+		}
+		
+		public void pop() {
+			if(!empty()) {
+				cur--;
+			}
+			else System.out.println("Can not pop, stack is empty!");
+		}
+		public int size(){
+			return cur;
+		}
+				
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		int stackSize = scan.nextInt();
+		
+		fixedSizeStack st= new fixedSizeStack(stackSize);
+		
+		for(int i=0;i<stackSize;i++) {
+			int a=scan.nextInt();
+			st.push(a);
+		}
+	scan.close();
+	System.out.printf("Element on the top is - %d. \n",st.top());
+	System.out.printf("The stack has %d element(s). \n",st.size());
+	st.push(78);
+	while(!st.empty()) {
+		st.pop();
+	}
+	st.pop();
+	}
+
+	}
